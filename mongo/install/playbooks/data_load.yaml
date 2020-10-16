@@ -1,0 +1,13 @@
+---
+- hosts: mongoservers
+  remote_user: alex
+  become: yes
+
+  tasks:
+  - name: get data from web
+    get_url:
+      url: https://raw.githubusercontent.com/ozlerhakan/mongodb-json-files/master/datasets/books.json
+      dest: /tmp/data.json
+
+  - name: mongoimport
+    shell: mongoimport --db test --collection book --file /tmp/data.json 
