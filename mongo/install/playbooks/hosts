@@ -1,0 +1,2 @@
+[mongoservers]
+mongoserver01 ansible_host=mongo1 ansible_port=22

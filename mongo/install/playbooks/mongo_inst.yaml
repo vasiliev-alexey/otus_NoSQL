@@ -1,0 +1,35 @@
+---
+- hosts: mongoservers
+  remote_user: alex
+  become: yes
+  vars:
+    mongo_bind_ip: 0.0.0.0
+  tasks:
+  - name: Import the public key used by the package management system
+    apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=4B7C549A058F8B6B state=present
+  - name: Create the /etc/apt/sources.list.d/mongodb-org-4.2.list file for Ubuntu 
+    shell: echo "deb [arch=amd64] http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+ 
+  - name: install mongodb
+    apt: pkg=mongodb-org state=latest update_cache=yes
+    notify:
+    - start mongodb
+
+
+  - name: Change mongo config file
+    template:
+      src: templates/mongod.conf.j2
+      dest: /etc/mongod.conf
+      mode: 0644
+    notify: restart mongod
+
+  - name: Enable mongo dservice
+    service:     
+      name: mongod
+      enabled: yes
+
+  handlers:
+    - name: start mongodb
+      service: name=mongod state=started
+    - name: restart mongod
+      service: name=mongod state=restarted
