@@ -1,0 +1,9 @@
+java_1       | org.davidcampos.cassandra.datastax.RunDatastax -         WRITE   5       2433    890     321     486.6
+java_1       | org.davidcampos.cassandra.datastax.RunDatastax -         READ    5       2343    999     245     468.6
+java_1       | org.davidcampos.cassandra.datastax.RunDatastax -         UPDATE  5       1248    280     240     249.6
+java_1       | org.davidcampos.cassandra.datastax.RunDatastax -         DELETE  5       1101    265     201     220.2
+java_1       | org.davidcampos.cassandra.datastax.RunDatastax - 
+java_1       | org.davidcampos.cassandra.kundera.RunKundera -   WRITE   5       2228    718     242     445.6
+java_1       | org.davidcampos.cassandra.kundera.RunKundera -   READ    5       1913    589     257     382.6
+java_1       | org.davidcampos.cassandra.kundera.RunKundera -   UPDATE  5       1004    243     163     200.8
+java_1       | org.davidcampos.cassandra.kundera.RunKundera -   DELETE  5       994     219     167     198.8

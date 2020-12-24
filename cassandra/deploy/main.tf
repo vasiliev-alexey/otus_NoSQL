@@ -7,41 +7,31 @@ provider "helm" {
 
 }
 
-resource "helm_release" "cassandra" {
 
-  name             = "cassandra-lab"
-  chart            = "cassandra"
-  namespace        = "cassandra"
-  timeout          = 600
-  repository       = "https://charts.bitnami.com/bitnami"
-  create_namespace = true
-
-  set {
-    name  = "dbUser.user"
-    value = "admin"
-  }
-
-  set {
-    name  = "dbUser.password"
-    value = "password"
-  }
-
-  set {
-    name  = "cluster.seedCount"
-    value = "3"
-  }
-
-  set {
-    name  = "cluster.seedCount"
-    value = "3"
-  }
-
-  set {
-    name  = "replicaCount"
-    value = "3"
-  }
-
-
-
+provider "google" {
+  version     = "~> 3.15.0"
+  project     = var.project_name
+#  region      = var.region_name
 
 }
+
+
+provider "kubernetes-alpha" {
+  config_path = "~/.kube/config"
+  version     = "~> 0.2"
+}
+
+
+resource "google_compute_address" "ip_address" {
+  name = "ip-adress-for-nginx-ingress"
+    region        = var.region_name
+}
+
+
+locals {
+  service_name     =  "${google_compute_address.ip_address.address}.xip.io"
+
+}
+
+
+
