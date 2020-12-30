@@ -1,0 +1,187 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "id": 1,
+    "links": [],
+    "panels": [
+      {
+        "datasource": "ClickHouse",
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": null
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 18,
+          "w": 10,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "displayMode": "gradient",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true
+        },
+        "pluginVersion": "7.0.5",
+        "targets": [
+          {
+            "database": "default",
+            "dateColDataType": "",
+            "dateLoading": false,
+            "dateTimeColDataType": "closed_at",
+            "dateTimeType": "DATETIME",
+            "datetimeLoading": false,
+            "extrapolate": true,
+            "format": "time_series",
+            "formattedQuery": "SELECT $timeSeries as t, count() FROM $table WHERE $timeFilter GROUP BY t ORDER BY t",
+            "intervalFactor": 1,
+            "query": "select  actor_login , toYear ( created_at)  , count(1)as $t from github_events\nwhere actor_login in ( 'vasiliev-alexey')\ngroup by toYear (  created_at), actor_login\norder by toYear ( created_at), actor_login",
+            "rawQuery": "select  actor_login , toYear ( created_at)  , count(1)as $t from github_events\nwhere actor_login in ( 'vasiliev-alexey')\ngroup by toYear (  created_at), actor_login\norder by toYear ( created_at), actor_login",
+            "refId": "A",
+            "round": "0s",
+            "skip_comments": true,
+            "table": "github_events",
+            "tableLoading": false
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Мои события",
+        "type": "bargauge"
+      },
+      {
+        "datasource": "ClickHouse",
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": null
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "yellow",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "Misc"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 18,
+          "w": 13,
+          "x": 10,
+          "y": 0
+        },
+        "id": 5,
+        "options": {
+          "displayMode": "gradient",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true
+        },
+        "pluginVersion": "7.0.5",
+        "targets": [
+          {
+            "database": "default",
+            "dateColDataType": "",
+            "dateLoading": false,
+            "dateTimeColDataType": "closed_at",
+            "dateTimeType": "DATETIME",
+            "datetimeLoading": false,
+            "extrapolate": true,
+            "format": "time_series",
+            "formattedQuery": "SELECT $timeSeries as t, count() FROM $table WHERE $timeFilter GROUP BY t ORDER BY t",
+            "intervalFactor": 1,
+            "query": "select  '1'  as t  , toYear ( created_at) , count(1)  from github_events\ngroup by toYear (  created_at)\norder by toYear ( created_at) asc",
+            "rawQuery": "select  '1'  as t  , toYear ( created_at) , count(1)  from github_events\ngroup by toYear (  created_at)\norder by toYear ( created_at) asc",
+            "refId": "A",
+            "round": "0s",
+            "skip_comments": true,
+            "table": "github_events",
+            "tableLoading": false
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Общие на GitHub",
+        "type": "bargauge"
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 25,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ]
+    },
+    "timezone": "",
+    "title": "Dash",
+    "uid": "ny3aTLxGz",
+    "version": 3
+  }

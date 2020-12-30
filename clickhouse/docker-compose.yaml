@@ -1,0 +1,31 @@
+version: "3"
+services:
+    server:
+     image: yandex/clickhouse-server
+     ports:
+     - "8123:8123"
+     - "9000:9000"
+     - "9009:9009"
+     volumes:
+     - /bigdata/ttt:/dataset:ro
+     ulimits:
+      nproc: 65535
+      nofile:
+       soft: 262144
+       hard: 262144
+    client:
+      image: yandex/clickhouse-client
+      command: ['--host', 'server']
+    grafana:
+      image: grafana/grafana
+      ports:
+        - 3000:3000
+      volumes:
+        - grafana_data:/var/lib/grafana
+      environment:
+        - GF_SECURITY_ADMIN_USER=admin
+        - GF_SECURITY_ADMIN_PASSWORD=secret
+        - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=vertamedia-clickhouse-datasource 
+      restart: always
+volumes:
+  grafana_data:
