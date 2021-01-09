@@ -1,4 +1,4 @@
-# CAP теорема
+# ![CAP теорема](https://davewentzel.com/sites/default/files/cap.jpg)
 
 ## Цель: В результате выполнения ДЗ вы научитесь работать с гитом.
 

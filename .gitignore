@@ -8,3 +8,6 @@
 .lock.info
 .terraform/
 *.log
+
+.rocks/
+crud/
