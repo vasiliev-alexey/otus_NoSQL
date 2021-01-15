@@ -19,4 +19,6 @@
 
 ### 10.  <img width="75" alt="portfolio_view" src="https://wobla.ru/blog/uploaded/d2836284-d3bc-493a-b415-98fecb5b7a5f.gif">  [InterSystems Caché / IRIS](hw/HW10.md)
 
-### 11. <img width="45" alt="portfolio_view" src="https://yt3.ggpht.com/a/AATXAJz4X1gBw9Arlhnmpq8mHZlnmud6ss8CLVBbrw=s48-c-k-c0xffffffff-no-rj-mo">   [Работа с tarantool ](hw/HW10.md)
+### 11. <img width="45" alt="portfolio_view" src="https://yt3.ggpht.com/a/AATXAJz4X1gBw9Arlhnmpq8mHZlnmud6ss8CLVBbrw=s48-c-k-c0xffffffff-no-rj-mo">   [Работа с tarantool ](hw/HW11.md)
+
+### 12. <img width="45" alt="portfolio_view" src="https://netsh.pp.ua/wp-content/uploads/2018/07/neo4j-logo.png">   [Neo4j](hw/HW12.md)
